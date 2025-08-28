@@ -1,0 +1,34 @@
+###############################################################################
+# © Copyright IBM Corporation 2021
+# Contributed by the Ansible Content for IBM Z Team
+#
+# Changelog
+#  All notable changes to this sample will be documented in this playbook
+#
+# 2021-04-30
+#  - Released initial version
+###############################################################################
+
+###############################################################################
+# Requirements:
+#     - IBM z/OS core collection 1.3.0 or later
+###############################################################################
+
+- hosts: zos_host
+  collections:
+    - ibm.ibm_zos_core
+  gather_facts: false
+  environment: "{{ environment_vars }}"
+
+  vars:
+    ptf_name: "{{ ptf_name }}"
+    global_csi: "{{ global_csi | default('SMPE.PROGPROD.CSI') }}"
+
+    
+  roles:
+    - role: query_csi
+      ptf:  "{{ ptf_name }}"
+      global_csi: "{{ global_csi }}"
+      zone: GLOBAL
+      list_operands: 'SYSMOD({{ ptf }}) .'
+   
