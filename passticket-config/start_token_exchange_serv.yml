@@ -8,8 +8,7 @@
   tasks:
 
     - name: Set JAVA_HOME path
-      ansible.builtin.shell:
-        cmd: "export JAVA_HOME=/usr/lpp/java/java17/J17.0_64"
+      ansible.builtin.shell: "export JAVA_HOME=/usr/lpp/java/java17/J17.0_64"
 
     - name: TEST
       ansible.builtin.shell: "mkdir -p /u/ibmuser/test_dir"
