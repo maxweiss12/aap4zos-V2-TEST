@@ -9,7 +9,7 @@
 
     - name: Set JAVA_HOME path
       ansible.builtin.shell:
-        cmd: export JAVA_HOME=/usr/lpp/java/java17/J17.0_64
+        cmd: "export JAVA_HOME=/usr/lpp/java/java17/J17.0_64"
 
     - name: Update PATH variable
       ansible.builtin.shell:
