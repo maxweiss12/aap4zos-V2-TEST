@@ -10,8 +10,6 @@
     - name: Set JAVA_HOME path
       ansible.builtin.shell: "export JAVA_HOME=/usr/lpp/java/java17/J17.0_64"
 
-    - name: TEST
-      ansible.builtin.shell: "mkdir -p /u/ibmuser/test_dir"
 
     - name: Update PATH variable
       ansible.builtin.shell:
@@ -25,13 +23,13 @@
       ansible.builtin.shell:
         cmd: export PATH=$JAVA_DIR/bin:$PATH
   
-    #- name: Start token exchange service
-     # ibm.ibm_zos_core.zos_tso_command:
-      #  commands: 
-          # - NEED A COMMAND HERE TO ALLOW AUTOGID
-       #   - ADDGROUP AUTTGRP OMVS(AUTOGID) DATA('WXA4Z GROUP')
-        #  - ADDUSER AUTTUSER NOPASSWORD DFLTGRP(AUTTGRP) OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) NAME('WXA4Z USER') DATA('WXA4Z Token Exchange Server')    
-         # - DEFINE STARTED AUTTKNST.* STDATA(USER(AUTTUSER) GROUP(AUTTGRP) TRUSTED(NO)) DATA('WXA4Z Token Exchange Server') 
-         # - SETROPTS RACLIST(STARTED) REFRESH
-          #- NEED OPERATOR COMMAND TO 'S AUTTKNST'
-        #max_rc: 4
+    - name: Start token exchange service
+      ibm.ibm_zos_core.zos_tso_command:
+        commands: 
+          - NEED A COMMAND HERE TO ALLOW AUTOGID
+          - ADDGROUP AUTTGRP OMVS(AUTOGID) DATA('WXA4Z GROUP')
+          - ADDUSER AUTTUSER NOPASSWORD DFLTGRP(AUTTGRP) OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) NAME('WXA4Z USER') DATA('WXA4Z Token Exchange Server')    
+          - DEFINE STARTED AUTTKNST.* STDATA(USER(AUTTUSER) GROUP(AUTTGRP) TRUSTED(NO)) DATA('WXA4Z Token Exchange Server') 
+          - SETROPTS RACLIST(STARTED) REFRESH
+          - NEED OPERATOR COMMAND TO 'S AUTTKNST'
+        max_rc: 4
