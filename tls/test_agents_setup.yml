@@ -32,8 +32,8 @@
         force: true
         remote_src: true
         dest_data_set: 
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
  
     - name: Pull root CA certificate content and save to file.
       ansible.builtin.get_url:
@@ -50,8 +50,8 @@
         force: true
         remote_src: true
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
 
     - name: Copy local shopz cert file to z/OS dataset
       ibm.ibm_zos_core.zos_copy:
@@ -60,8 +60,8 @@
         force: true
         is_binary: true
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
 
     - name: create smpe directory
       ansible.builtin.file:
@@ -127,8 +127,8 @@
         force: true
         remote_src: true
         dest_data_set: 
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
  
     - name: Pull root CA certificate content and save to file.
       ansible.builtin.get_url:
@@ -145,8 +145,8 @@
         force: true
         remote_src: true
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
 
     - name: Pull EV Root CA
       ansible.builtin.get_url:
@@ -164,8 +164,8 @@
         force: true
         remote_src: true
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
           
 
     - name: Setup RACF permissions and keyrings
@@ -190,7 +190,7 @@
 
     - name: Order jcl.
       ibm.ibm_zos_core.zos_job_submit:
-        location: local
+        location: LOCAL
         src: templates/order.jcl.j2
         use_template: true
         wait_time_s: 1000
@@ -201,7 +201,7 @@
 
     - name: Apply jcl.
       ibm.ibm_zos_core.zos_job_submit:
-        location: local
+        location: LOCAL
         src: templates/apply.jcl.j2
         use_template: true
         wait_time_s: 1000
