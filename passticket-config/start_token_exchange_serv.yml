@@ -23,16 +23,16 @@
       ansible.builtin.shell:
         cmd: export PATH=$JAVA_DIR/bin:$PATH
   
-    # - name: Configure token exchange service
-    #   ibm.ibm_zos_core.zos_tso_command:
-    #     commands: 
-    #       - RALTER FACILITY BPX.NEXT.USER APPLDATA('0/0')
-    #       - SETROPTS RACLIST(FACILITY) REFRESH           
-    #       - ADDGROUP AUTTGRP OMVS(AUTOGID) DATA('WXA4Z GROUP')
-    #       - ADDUSER AUTTUSER NOPASSWORD DFLTGRP(AUTTGRP) OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) NAME('WXA4Z USER') DATA('WXA4Z Token Exchange Server')    
-    #       - RDEFINE STARTED AUTTKNST.* STDATA(USER(AUTTUSER) GROUP(AUTTGRP) TRUSTED(YES)) DATA('WXA4Z Token Exchange Server') 
-    #       - SETROPTS RACLIST(STARTED) REFRESH
-    #     max_rc: 4
+    - name: Configure token exchange service
+      ibm.ibm_zos_core.zos_tso_command:
+        commands: 
+          - RALTER FACILITY BPX.NEXT.USER APPLDATA('0/0')
+          - SETROPTS RACLIST(FACILITY) REFRESH           
+          - ADDGROUP AUTTGRP OMVS(AUTOGID) DATA('WXA4Z GROUP')
+          - ADDUSER AUTTUSER NOPASSWORD DFLTGRP(AUTTGRP) OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) NAME('WXA4Z USER') DATA('WXA4Z Token Exchange Server')    
+          - RDEFINE STARTED AUTTKNST.* STDATA(USER(AUTTUSER) GROUP(AUTTGRP) TRUSTED(YES)) DATA('WXA4Z Token Exchange Server') 
+          - SETROPTS RACLIST(STARTED) REFRESH
+        max_rc: 4
 
     - name: START TOKEN EXCHANGE SERVICE
       ibm.ibm_zos_core.zos_operator:
