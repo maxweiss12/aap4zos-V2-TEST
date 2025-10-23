@@ -26,7 +26,8 @@
     - name: Start token exchange service
       ibm.ibm_zos_core.zos_tso_command:
         commands: 
-          #- NEED A COMMAND HERE TO ALLOW AUTOGID
+          - RALTER FACILITY BPX.NEXT.USER APPLDATA('0/0')
+          - SETROPTS RACLIST(FACILITY) REFRESH           
           - ADDGROUP AUTTGRP OMVS(AUTOGID) DATA('WXA4Z GROUP')
           - ADDUSER AUTTUSER NOPASSWORD DFLTGRP(AUTTGRP) OMVS(HOME(/tmp) PROGRAM(/bin/sh) AUTOUID) NAME('WXA4Z USER') DATA('WXA4Z Token Exchange Server')    
           - DEFINE STARTED AUTTKNST.* STDATA(USER(AUTTUSER) GROUP(AUTTGRP) TRUSTED(NO)) DATA('WXA4Z Token Exchange Server') 
