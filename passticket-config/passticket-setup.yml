@@ -26,7 +26,9 @@
       ibm.ibm_zos_core.zos_lineinfile:
         src: SYS1.PARMLIB(IKJTSO00)
         insertafter: 'WSMMWF00'
-        line: '   RACMAP'
+        line: '   RACMAP00                  +'
+        firstmatch: true
+        
 
 
     # - name: Replace a specific line before a specific sentence with backup, treating the text specified for regexp and before as literal strings.
