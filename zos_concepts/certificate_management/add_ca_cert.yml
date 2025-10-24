@@ -27,6 +27,7 @@
         dest_data_set:
           type: SEQ
           record_format: VB
+          dataset_type: seq
 
   
     - name: Create sequential data sets with z/OS certificates and intermediate CA content.
