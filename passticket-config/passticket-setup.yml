@@ -22,11 +22,22 @@
     #       - SETROPTS RACLIST(IDIDMAP) REFRESH                                    
     #     max_rc: 4
 
-    - name: Modify IKJTSO00 member of SYS1.PARMLIB for RACMAP
-      ibm.ibm_zos_core.zos_lineinfile:
-        src: SYS1.PARMLIB(IKJTSO00)
-        insertafter: '\s+WSMMWF00'
-        line: 'RACMAP'
+    # - name: Modify IKJTSO00 member of SYS1.PARMLIB for RACMAP
+    #   ibm.ibm_zos_core.zos_lineinfile:
+    #     src: SYS1.PARMLIB(IKJTSO00)
+    #     insertafter: '\s+WSMMWF00'
+    #     line: 'RACMAP'
+
+
+    - name: Replace a specific line before a specific sentence with backup, treating the text specified for regexp and before as literal strings.
+      ibm.ibm_zos_core.zos_replace:
+        target: SYS1.PARMLIB(IKJTSO00)
+        regexp: RACMAP         
+        before: '   MVPXDISP                  +'
+        literal:
+          - regexp
+          - before
+
 
 
 
