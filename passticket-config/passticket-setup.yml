@@ -25,10 +25,8 @@
     - name: Modify IKJTSO00 member of SYS1.PARMLIB for RACMAP
       ibm.ibm_zos_core.zos_lineinfile:
         src: SYS1.PARMLIB(IKJTSO00)
-        insertafter: '^WSMMWF00'
+        insertafter: '\s+WSMMWF00'
         line: 'RACMAP'
-
-
 
 
 
