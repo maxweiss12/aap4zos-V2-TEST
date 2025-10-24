@@ -11,29 +11,6 @@
       
   tasks:
     
-    - name: Define Db2_v12 software instance
-      ansible.builtin.uri:
-        url: "https://{{ zmf_host }}:10443/zosmf/swmgmt/swi"
-        method: POST
-        user: "{{ zmf_user | trim }}"
-        password: "{{ zmf_password | trim }}"
-        force_basic_auth: true
-        body_format: json
-        body:
-          name: "Db2_v12"
-          system: "VS01_004"
-          globalzone: "SMPE.PROGPROD.CSI"
-          targetzones: ["DB2V12T"]    
-        headers:
-          Host: "{{ zmf_host }}"
-          Origin: "https://{{ zmf_host }}"
-        validate_certs: false
-        return_content: true
-        status_code: "200"
-      register: instance_data
-      delegate_to: localhost
-      ignore_errors: false
-
     - name: Define Db2_v13 software instance
       ansible.builtin.uri:
         url: "https://{{ zmf_host }}:10443/zosmf/swmgmt/swi"
@@ -44,8 +21,8 @@
         body_format: json
         body:
           name: "Db2_v13"
-          system: "VS01_004"
-          globalzone: "SMPE.PROGPROD.CSI"
+          system: "VS01_005"
+          globalzone: "DB2V13.CSI"
           targetzones: ["DB2V13T"]    
         headers:
           Host: "{{ zmf_host }}"
@@ -56,7 +33,7 @@
       register: instance_data
       delegate_to: localhost
       ignore_errors: false
-      
+
     - name: Define CICS software instance
       ansible.builtin.uri:
         url: "https://{{ zmf_host }}:10443/zosmf/swmgmt/swi"
@@ -67,8 +44,8 @@
         body_format: json
         body:
           name: "CICS"
-          system: "VS01_004"
-          globalzone: "SMPE.PROGPROD.CSI"
+          system: "VS01_005"
+          globalzone: "CICSTS61.CSI"
           targetzones: ["CICS61T"]    
         headers:
           Host: "{{ zmf_host }}"
@@ -90,8 +67,8 @@
         body_format: json
         body:
           name: "IMS"
-          system: "VS01_004"
-          globalzone: "SMPE.PROGPROD.CSI"
+          system: "VS01_005"
+          globalzone: "IMSV15.CSI"
           targetzones: ["IMS151T"]    
         headers:
           Host: "{{ zmf_host }}"
