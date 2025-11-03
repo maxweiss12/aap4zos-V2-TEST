@@ -10,5 +10,5 @@
         src: ZOS31T.SYS1.MIGLIB(AMAPDUPL)
         dest: SYS1.MIGLIB(AMAPDUPL)
         remote_src: true
-        executable: true
+        executable: false
         
