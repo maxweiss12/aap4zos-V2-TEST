@@ -218,6 +218,7 @@
         executable: true
         force_lock: true
         force: true
+        aliases: true
 
 
     - name: Submit z/OS operator command.
