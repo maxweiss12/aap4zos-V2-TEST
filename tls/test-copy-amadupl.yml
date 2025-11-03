@@ -11,4 +11,5 @@
         dest: SYS1.MIGLIB(AMAPDUPL)
         remote_src: true
         executable: false
+        force_lock: true
         
