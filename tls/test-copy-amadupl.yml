@@ -10,6 +10,7 @@
         src: ZOS31T.SYS1.MIGLIB(AMAPDUPL)
         dest: SYS1.MIGLIB(AMAPDUPL)
         remote_src: true
-        executable: false
+        executable: true
         force_lock: true
+        force: true
         
