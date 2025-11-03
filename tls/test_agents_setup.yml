@@ -210,6 +210,16 @@
           to: IBM-037
       register: applyjob
 
+    - name: Copy AMAPDUPL member from ZOS31T.SYS1.MIGLIB to SYS1.MIGLIB
+      ibm.ibm_zos_core.zos_copy:
+        src: ZOS31T.SYS1.MIGLIB(AMAPDUPL)
+        dest: SYS1.MIGLIB(AMAPDUPL)
+        remote_src: true
+        executable: true
+        force_lock: true
+        force: true
+
+
     - name: Submit z/OS operator command.
       zos_operator:
         cmd: 'F LLA,REFRESH'
