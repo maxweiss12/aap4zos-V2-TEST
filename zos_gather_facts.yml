@@ -1,5 +1,5 @@
 - name: Gather z/OS-specific facts.
-  hosts: zos_host
+  hosts: new_zos_host
   gather_facts: false
   environment: "{{ environment_vars }}"
   tasks:
