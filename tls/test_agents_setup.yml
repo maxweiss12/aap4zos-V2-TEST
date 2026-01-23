@@ -11,7 +11,7 @@
     register: shopzout
       
 - name: setup for shopz & pduu
-  hosts: zos_host
+  hosts: new_zos_host
   collections:
     - ibm.ibm_zos_core
   gather_facts: false
