@@ -34,8 +34,8 @@
         dest: "{{ item.dest_name }}"
         force: true
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
       loop:
         - { content: "{{ zos_ca_cert }}", dest_name: IBMUSER.COMMON.INTCERT }
         - { content: "{{ zos_cert }}", dest_name: IBMUSER.COMMON.ZCERT }
@@ -65,8 +65,8 @@
         force: true
         remote_src: true
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
 
     - name: Add line to SYS1.PARMLIB(IZUPRM00) member to CSRF_SWITCH(OFF).
       ibm.ibm_zos_core.zos_lineinfile:
