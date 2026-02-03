@@ -25,8 +25,8 @@
         force: true
         is_binary: true 
         dest_data_set:
-          type: seq
-          record_format: vb
+          type: SEQ
+          record_format: VB
   
     - name: Create sequential data sets with z/OS certificates and intermediate CA content.
       ibm.ibm_zos_core.zos_copy:
