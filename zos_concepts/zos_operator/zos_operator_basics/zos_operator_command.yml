@@ -1,5 +1,5 @@
 ---
-- hosts: new_zos_host
+- hosts: zos_host
   collections:
     - ibm.ibm_zos_core
   gather_facts: false
