@@ -20,8 +20,8 @@
         force_basic_auth: true
         body_format: json
         body:
-          name: "Db2_v13"
-          system: "VS01_005"
+          name: "Db2"
+          system: "VS01_003"
           globalzone: "DB2V13.CSI"
           targetzones: ["DB2V13T"]    
         headers:
@@ -44,9 +44,9 @@
         body_format: json
         body:
           name: "CICS"
-          system: "VS01_005"
-          globalzone: "CICSTS61.CSI"
-          targetzones: ["CICS61T"]    
+          system: "VS01_002"
+          globalzone: "CICSTS62.CSI"
+          targetzones: ["CICS62T"]    
         headers:
           Host: "{{ zmf_host }}"
           Origin: "https://{{ zmf_host }}"
