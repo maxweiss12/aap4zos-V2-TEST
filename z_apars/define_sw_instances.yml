@@ -57,7 +57,7 @@
       delegate_to: localhost
       ignore_errors: false
 
-    - name: Define IMS software instance
+    - name: Define COBOL software instance
       ansible.builtin.uri:
         url: "https://{{ zmf_host }}:10443/zosmf/swmgmt/swi"
         method: POST
@@ -66,10 +66,33 @@
         force_basic_auth: true
         body_format: json
         body:
-          name: "IMS"
-          system: "VS01_005"
-          globalzone: "IMSV15.CSI"
-          targetzones: ["IMS151T"]    
+          name: "COBOL"
+          system: "VS01_002"
+          globalzone: "SMPE.PROGPROD.CSI"
+          targetzones: ["COB650T"]    
+        headers:
+          Host: "{{ zmf_host }}"
+          Origin: "https://{{ zmf_host }}"
+        validate_certs: false
+        return_content: true
+        status_code: "200"
+      register: instance_data
+      delegate_to: localhost
+      ignore_errors: false
+
+    - name: Define zOS software instance
+      ansible.builtin.uri:
+        url: "https://{{ zmf_host }}:10443/zosmf/swmgmt/swi"
+        method: POST
+        user: "{{ zmf_user | trim }}"
+        password: "{{ zmf_password | trim }}"
+        force_basic_auth: true
+        body_format: json
+        body:
+          name: "zOS"
+          system: "VS01_002"
+          globalzone: "SMPE.ZOS31.CSI"
+          targetzones: ["TGT31"]    
         headers:
           Host: "{{ zmf_host }}"
           Origin: "https://{{ zmf_host }}"
