@@ -1,6 +1,6 @@
 ---
 - name: Execute one or more TSO commands.
-  hosts: new_zos_host
+  hosts: zos_host
   gather_facts: false
   environment: "{{ environment_vars }}"
   tasks:
