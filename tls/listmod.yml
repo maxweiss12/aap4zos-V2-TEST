@@ -12,7 +12,7 @@
 
     - name: Submit listmod jcl.
       ibm.ibm_zos_core.zos_job_submit:
-        location: LOCAL
+        location: local
         src: templates/apply.jcl.j2
         use_template: true
         wait_time_s: 500
